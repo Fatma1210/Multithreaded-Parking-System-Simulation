@@ -6,21 +6,12 @@ public class Car {
     private int arrivalTime;
     private int parkingDuration ;
 
-    public void setCarNumber(int carNumber) {
-        this.carNumber = carNumber;
-    }
-
-    public void setGateNumber(int gateNumber) {
-        this.gateNumber = gateNumber;
-    }
-
-    public void setArrivalTime(int arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public void setParkingDuration(int parkingDuration) {
-        this.parkingDuration = parkingDuration;
-    }
+   public Car(int gateNumber , int carNumber , int arrivalTime , int parkingDuration){
+       this.gateNumber = gateNumber ;
+       this.carNumber = carNumber ;
+       this.arrivalTime = arrivalTime ;
+       this.parkingDuration = parkingDuration ;
+   }
     public void getCarInfo (){
         System.out.println("Gate Number: " + gateNumber);
         System.out.println("Car Number: " + carNumber);
