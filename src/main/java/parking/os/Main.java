@@ -3,6 +3,7 @@ package parking.os;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +23,9 @@ public class Main {
                     int carNumber = Integer.parseInt(parts[1]);
                     int arrivalTime = Integer.parseInt(parts[2]);
                     int parkingDuration = Integer.parseInt(parts[3]);
-                    Car car = new Car(gateNumber , carNumber , arrivalTime , parkingDuration);
+                    Semaphore semaphore = new Semaphore(4);
+                    ParkingLot parkingLot=new ParkingLot(semaphore);
+                    Car car = new Car(gateNumber , carNumber , arrivalTime , parkingDuration,parkingLot);
                     car.getCarInfo();
 
                 } catch (NumberFormatException e) {
