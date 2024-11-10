@@ -3,8 +3,8 @@ import java.util.concurrent.Semaphore;
 public class ParkingLot {
     private int numberOfSpots;
     private final Semaphore semaphore;
-    public ParkingLot(Semaphore semaphore) {
-        this.numberOfSpots = 4;
+    public ParkingLot() {
+        this.numberOfSpots = 4; // default number of parking spots
         this.semaphore = new Semaphore(numberOfSpots);
     }
 
@@ -13,16 +13,16 @@ public class ParkingLot {
             semaphore.acquire();
             return true;
         } else {
-           //semaphore.acquire();
            return false;
         }
     }
     public long calculateWaitTime() throws InterruptedException {
-        long startTime = System.currentTimeMillis();
-        semaphore.acquire();
-        long endTime = System.currentTimeMillis();
-        return endTime - startTime;
+        long startTime = System.nanoTime(); // Start time in nanoseconds
+        semaphore.acquire(); // Block until a spot is available
+        long endTime = System.nanoTime(); // End time in nanoseconds
+        return (endTime - startTime) / 1000000; // Convert to milliseconds
     }
+
     public void leave(){
         semaphore.release();
     }
