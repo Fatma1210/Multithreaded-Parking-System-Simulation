@@ -20,7 +20,7 @@ public class ParkingLot {
         long startTime = System.nanoTime(); // Start time in nanoseconds
         semaphore.acquire(); // Block until a spot is available
         long endTime = System.nanoTime(); // End time in nanoseconds
-        return (endTime - startTime) / 1000000; // Convert to milliseconds
+        return ((endTime - startTime)/ 1000000000 );//Convert to seconds
     }
 
     public void leave(){
