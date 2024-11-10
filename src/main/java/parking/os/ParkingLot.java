@@ -13,9 +13,15 @@ public class ParkingLot {
             semaphore.acquire();
             return true;
         } else {
-           semaphore.acquire();
-            return false;
+           //semaphore.acquire();
+           return false;
         }
+    }
+    public long calculateWaitTime() throws InterruptedException {
+        long startTime = System.currentTimeMillis();
+        semaphore.acquire();
+        long endTime = System.currentTimeMillis();
+        return endTime - startTime;
     }
     public void leave(){
         semaphore.release();
